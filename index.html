@@ -5,9 +5,176 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Foxbat Intelligence</title>
+    <style>
+      :root {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        color-scheme: dark;
+        color: #f8fafc;
+        background-color: #050811;
+      }
+      body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: radial-gradient(circle at 50% 20%, #0c1a2e 0%, #050811 70%);
+      }
+      #root {
+        width: 100%;
+        margin: 0 auto;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        width: 100%;
+        padding: 24px 16px;
+        box-sizing: border-box;
+      }
+      .card {
+        background: #0f172a;
+        border: 1px solid rgba(0, 229, 255, 0.25);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 229, 255, 0.08);
+        padding: 40px 32px;
+        max-width: 540px;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #00e5ff;
+        background: rgba(0, 229, 255, 0.08);
+        border: 1px solid rgba(0, 229, 255, 0.25);
+        border-radius: 9999px;
+        margin-bottom: 20px;
+      }
+      .badge-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #00e5ff;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #00e5ff;
+      }
+      .title {
+        margin: 0 0 8px;
+        font-size: 36px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: #f8fafc;
+        line-height: 1.2;
+      }
+      .subtitle {
+        margin: 0 0 16px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #00e5ff;
+      }
+      .description {
+        margin: 0 0 28px;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #94a3b8;
+      }
+      .actions {
+        margin-bottom: 32px;
+      }
+      .test-btn {
+        background: linear-gradient(135deg, #00e5ff 0%, #0099ff 100%);
+        color: #050811;
+        font-weight: 700;
+        font-size: 15px;
+        padding: 12px 28px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        box-shadow: 0 4px 14px rgba(0, 229, 255, 0.35);
+      }
+      .test-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 229, 255, 0.5);
+      }
+      .test-btn:active {
+        transform: translateY(0);
+      }
+      .meta-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(148, 163, 184, 0.15);
+      }
+      .meta-item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .meta-label {
+        font-size: 11px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #64748b;
+      }
+      .meta-value {
+        font-size: 13px;
+        font-weight: 600;
+        color: #e2e8f0;
+      }
+      @media (max-width: 600px) {
+        .card { padding: 28px 20px; }
+        .title { font-size: 28px; }
+        .subtitle { font-size: 16px; }
+        .meta-grid { grid-template-columns: 1fr; gap: 16px; }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <main class="container">
+        <div class="card">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Deployment Ready
+          </div>
+          <h1 class="title">Foxbat Intelligence</h1>
+          <p class="subtitle">Cloudflare Pages Deployment Test</p>
+          <p class="description">
+            A lightweight responsive test page to verify build output and test Cloudflare Pages hosting.
+          </p>
+          <div class="actions">
+            <button type="button" class="test-btn" onclick="alert('Cloudflare Pages deployment test successful! Foxbat Intelligence is ready.')">
+              Test Successful
+            </button>
+          </div>
+          <div class="meta-grid">
+            <div class="meta-item">
+              <span class="meta-label">Build Engine</span>
+              <span class="meta-value">Vite + React 19</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Type Safety</span>
+              <span class="meta-value">TypeScript</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Host Target</span>
+              <span class="meta-value">Cloudflare Pages</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
