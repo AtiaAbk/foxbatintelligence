@@ -1,43 +1,56 @@
+import React from 'react';
+import { RouterProvider, useRouter } from './context/RouterContext';
+import { Navbar } from './components/Navbar';
+import { Footer } from './components/Footer';
+import { HomePage } from './pages/HomePage';
+import { ServicesPage } from './pages/ServicesPage';
+import { CommunityPage } from './pages/CommunityPage';
+import { ResourcesPage } from './pages/ResourcesPage';
+import { ContactPage } from './pages/ContactPage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { TermsPage } from './pages/TermsPage';
 import './App.css';
 
-function App() {
-  const handleTestClick = () => {
-    alert('Cloudflare Pages deployment test successful! Foxbat Intelligence is ready.');
+const MainContent: React.FC = () => {
+  const { path } = useRouter();
+
+  const renderCurrentPage = () => {
+    switch (path) {
+      case '/':
+        return <HomePage />;
+      case '/services':
+        return <ServicesPage />;
+      case '/community':
+        return <CommunityPage />;
+      case '/resources':
+        return <ResourcesPage />;
+      case '/contact':
+        return <ContactPage />;
+      case '/privacy':
+        return <PrivacyPage />;
+      case '/terms':
+        return <TermsPage />;
+      default:
+        return <HomePage />;
+    }
   };
 
   return (
-    <main className="container">
-      <div className="card">
-        <div className="badge">
-          <span className="badge-dot"></span>
-          Deployment Ready
-        </div>
-        <h1 className="title">Foxbat Intelligence</h1>
-        <p className="subtitle">Cloudflare Pages Deployment Test</p>
-        <p className="description">
-          A lightweight responsive test page to verify build output and test Cloudflare Pages hosting.
-        </p>
-        <div className="actions">
-          <button type="button" className="test-btn" onClick={handleTestClick}>
-            Test Successful
-          </button>
-        </div>
-        <div className="meta-grid">
-          <div className="meta-item">
-            <span className="meta-label">Build Engine</span>
-            <span className="meta-value">Vite + React 19</span>
-          </div>
-          <div className="meta-item">
-            <span className="meta-label">Type Safety</span>
-            <span className="meta-value">TypeScript</span>
-          </div>
-          <div className="meta-item">
-            <span className="meta-label">Host Target</span>
-            <span className="meta-value">Cloudflare Pages</span>
-          </div>
-        </div>
-      </div>
-    </main>
+    <div className="app-shell">
+      <Navbar />
+      <main id="main-content" className="app-main" tabIndex={-1}>
+        {renderCurrentPage()}
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export function App() {
+  return (
+    <RouterProvider>
+      <MainContent />
+    </RouterProvider>
   );
 }
 
